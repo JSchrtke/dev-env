@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+$script_dir/git
+$script_dir/rust
+source $HOME/.profile
+
+mkdir $HOME/bootstrap-system
+cd $HOME/bootstrap-system
+git clone https://github.com/wez/wezterm
+cd wezterm
+git submodule update --init --recursive
+./get-deps
+cargo build --release
+
+mkdir $HOME/bin
+source $HOME/.profile
+cp ./target/release/wezterm $HOME/bin
+cp ./target/release/wezterm-mux-server $HOME/bin
+cp ./target/release/wezterm-gui $HOME/bin
+
+mkdir ~/.local/share/applications
+cp ./assets/wezterm.desktop $HOME/.local/share/applications
+
+cd $HOME
+rm -rf $HOME/bootstrap-system
