@@ -5,6 +5,7 @@ $script_dir/git
 $script_dir/rust
 source $HOME/.profile
 
+mkdir $HOME/develop
 mkdir $HOME/develop/wez
 cd $HOME/develop/wez
 git clone https://github.com/wez/wezterm
