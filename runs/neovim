@@ -18,4 +18,6 @@ mkdir $dev_dir
 cd $dev_dir
 git clone https://github.com/jschrtke/dotfiles.git
 cd ./dotfiles
-cp -r ./nvim $HOME/.config
+mkdir $HOME/.config
+mkdir $HOME/.config/nvim
+cp -r ./nvim $HOME/.config/
