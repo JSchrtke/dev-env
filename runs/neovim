@@ -4,8 +4,8 @@ script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 
 sudo apt install -y clang cmake ninja-build gettext curl build-essential git
 
-mkdir $HOME/bootstrap-system
-cd $HOME/bootstrap-system
+mkdir $HOME/develop/neovim
+cd $HOME/develop/neovim
 git clone https://github.com/neovim/neovim.git
 cd neovim
 
@@ -13,4 +13,3 @@ git checkout stable
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
 
-rm -rf $HOME/bootstrap-system

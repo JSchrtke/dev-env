@@ -5,8 +5,8 @@ $script_dir/git
 $script_dir/rust
 source $HOME/.profile
 
-mkdir $HOME/bootstrap-system
-cd $HOME/bootstrap-system
+mkdir $HOME/develop/wez
+cd $HOME/develop/wez
 git clone https://github.com/wez/wezterm
 cd wezterm
 git submodule update --init --recursive
@@ -21,6 +21,3 @@ cp ./target/release/wezterm-gui $HOME/bin
 
 mkdir ~/.local/share/applications
 cp ./assets/wezterm.desktop $HOME/.local/share/applications
-
-cd $HOME
-rm -rf $HOME/bootstrap-system
