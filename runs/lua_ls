@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+mkdir $HOME/lua-ls
+cd $HOME/lua-ls
+wget https://github.com/LuaLS/lua-language-server/releases/download/3.14.0/lua-language-server-3.14.0-linux-x64.tar.gz
+tar -xf lua-language-server-3.14.0-linux-x64.tar.gz
+
+mkdir $HOME/bin
+source $HOME/.profile
+
+ln -s -f $HOME/lua-ls/bin/lua-language-server $HOME/bin/lua-language-server
