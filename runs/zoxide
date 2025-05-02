@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+$script_dir/rust
+cargo install zoxide --locked
+zoxide_init_command='eval "$(zoxide init bash --cmd j)"';
+if [ -f ~/.bashrc ]; then
+    grep ".*zoxide init.*" ~/.bashrc > /dev/null;
+    initialized=$?;
+    # cursed
+    if [ $initialized -eq 1 ]; then
+        echo $zoxide_init_command >> ~/.bashrc;
+    fi
+else
+    touch ~/.bashrc;
+    echo $zoxide_init_command >> ~/.bashrc;
+fi
