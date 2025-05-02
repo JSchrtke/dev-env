@@ -14,11 +14,11 @@ git submodule update --init --recursive
 ./get-deps
 cargo build --release
 
-mkdir $HOME/bin
-source $HOME/.profile
-cp ./target/release/wezterm $HOME/bin
-cp ./target/release/wezterm-mux-server $HOME/bin
-cp ./target/release/wezterm-gui $HOME/bin
+
+bin_dir=/usr/local/bin
+sudo cp ./target/release/wezterm $bin_dir
+sudo cp ./target/release/wezterm-mux-server $bin_dir
+sudo cp ./target/release/wezterm-gui $bin_dir
 
 mkdir ~/.local/share/applications
 cp ./assets/wezterm.desktop $HOME/.local/share/applications
