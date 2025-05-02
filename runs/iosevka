@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+temp_dir=$HOME/temp
+mkdir $temp_dir
+cd $temp_dir
+wget -O Iosevka.zip https://github.com/be5invis/Iosevka/releases/download/v33.2.2/PkgTTC-Iosevka-33.2.2.zip
+unzip -o ./Iosevka.zip
+find . -iregex ".*\.ttc" -exec sudo mv {} /usr/local/share/fonts \;
+ls -lah /usr/local/share/fonts
+fc-cache -f -v
+cd $HOME
+rm -rf $temp_dir
