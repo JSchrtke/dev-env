@@ -10,11 +10,11 @@ dev_dir=$HOME/develop/js
 mkdir $dev_dir
 
 cd $dev_dir
-git clone https://github.com/JSchrtke/dotfiles.git
+git clone https://github.com/jschrtke/dotfiles.git
 cd ./dotfiles
 cp -r wezterm $config_dir
 
 cd $dev_dir
-git clone https://github.com/JSchrtke/dotfiles.git
+git clone https://github.com/jschrtke/dotfiles.git
 cd ./dotfiles
 cp -r ./nvim $config_dir

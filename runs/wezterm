@@ -28,6 +28,6 @@ mkdir $HOME/.config/wezterm
 mkdir $HOME/develop
 mkdir $HOME/develop/js
 cd $HOME/develop/js
-git clone https://github.com/JSchrtke/dotfiles.git
+git clone https://github.com/jschrtke/dotfiles.git
 cd dotfiles
 cp -r wezterm $HOME/.config
