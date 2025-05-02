@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+config_dir=$HOME/.config
+mkdir $config_dir
+mkdir $config_dir/nvim
+mkdir $config_dir/wezterm
+
+mkdir $HOME/develop
+dev_dir=$HOME/develop/js
+mkdir $dev_dir
+
+cd $dev_dir
+git clone https://github.com/JSchrtke/dotfiles.git
+cd ./dotfiles
+cp -r wezterm $config_dir
+
+cd $dev_dir
+git clone https://github.com/JSchrtke/dotfiles.git
+cd ./dotfiles
+cp -r ./nvim $config_dir
