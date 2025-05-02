@@ -1,4 +1,13 @@
 #!/usr/bin/env bash
 
+cargo --version > /dev/null 2>&1;
+cargo_version_return=$?;
+rustc --version > /dev/null 2>&1;
+rustc_version_return=$?;
+if [[ $rustc_version_installed -eq 0 && $cargo_version_return -eq 0 ]]; then
+    echo "rust already installed, quitting...";
+    exit;
+fi
+
 sudo apt -y install curl
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
