@@ -2,6 +2,7 @@
 
 config_dir=$HOME/.config
 mkdir $config_dir
+rm -rf $config_dir/nvim
 mkdir $config_dir/nvim
 mkdir $config_dir/wezterm
 
