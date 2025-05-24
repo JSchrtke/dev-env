@@ -2,6 +2,7 @@
 
 script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 $script_dir/rust
+source ~/.profile
 cargo install zoxide --locked
 zoxide_init_command='eval "$(zoxide init bash --cmd j)"';
 if [ -f ~/.bashrc ]; then
