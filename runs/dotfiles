@@ -1,10 +1,18 @@
 #!/usr/bin/env bash
 
+git --version > /dev/null 2>&1;
+git_version_return=$?;
+if [ $git_version_return -ne 0 ]; then
+    script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+    $script_dir/git
+fi
+
 config_dir=$HOME/.config
 mkdir $config_dir
 rm -rf $config_dir/nvim
 mkdir $config_dir/nvim
 mkdir $config_dir/wezterm
+mkdir $config_dir/i3
 
 temp=$HOME/temp_dotfiles_install_dir
 mkdir $temp
@@ -14,6 +22,7 @@ git clone https://github.com/jschrtke/dotfiles.git
 cd ./dotfiles
 cp -r ./wezterm $config_dir
 cp -r ./nvim $config_dir
+cp -r ./i3 $config_dir
 
 cd $HOME
 rm -rf $temp
