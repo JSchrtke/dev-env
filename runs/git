@@ -2,4 +2,9 @@
 
 sudo apt install -y git
 git config --global init.defaultBranchName main
-git config --global core.editor "nvim -u NORC"
+
+nvim --version > /dev/null 2>&1;
+nvim_version_return=$?;
+if [ $nvim_version_return -ne 0 ]; then
+    git config --global core.editor "nvim -u NORC"
+fi
