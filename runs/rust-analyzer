@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# TODO: ensure rustup is actually installed
+rustup component add rust-analyzer
