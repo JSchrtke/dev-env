@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
 
-sudo apt install -y fzf
+if [ -z "$(which fzf)" ]; then
+    sudo apt install -y fzf
+else
+    echo "fzf is already installed. Skipping..."
+fi

@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-git --version > /dev/null 2>&1;
-git_version_return=$?;
-if [ $git_version_return -ne 0 ]; then
+if [ -z "$(which git)" ]; then
     script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
     $script_dir/git
 fi
@@ -18,7 +16,7 @@ temp=$HOME/temp_dotfiles_install_dir
 mkdir $temp
 cd $temp
 
-git clone https://github.com/jschrtke/dotfiles.git
+git clone https://github.com/jschrtke/dotfiles.git --recurse-submodules
 cd ./dotfiles
 cp -r ./wezterm $config_dir
 cp -r ./nvim $config_dir

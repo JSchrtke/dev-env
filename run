@@ -29,16 +29,12 @@ execute() {
 	"$@"
 }
 
-sudo -v
-sudo dpkg --configure --pending
-sudo apt update
-sudo apt upgrade -y
-
 log "$script_dir -- $filter"
 
 cd $script_dir
 scripts=$(find ./runs -maxdepth 1 -mindepth 1 -executable -type f)
 
+sudo -v
 for script in $scripts; do
 	if echo "$script" | grep -qv "$filter"; then
 		log "filtering $script"
