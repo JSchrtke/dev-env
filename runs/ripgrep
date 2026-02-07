@@ -1,7 +1,3 @@
 #!/usr/bin/env bash
 
-if [ -z "$(which rg)" ]; then
-    sudo apt install ripgrep
-else 
-    echo "ripgrep is already installed. Skipping..."
-fi
+sudo apt install ripgrep

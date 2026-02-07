@@ -1,7 +1,3 @@
 #!/usr/bin/env bash
 
-if [ -z "$(which croc)" ]; then
-    curl https://getcroc.schollz.com | bash
-else
-    echo "croc is already installed. Skipping..."
-fi
+curl https://getcroc.schollz.com | bash

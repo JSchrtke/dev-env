@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-if [ -z "$(which sd)" ]; then
-    script_dir=$(cd $(dirname "$bash_source[0]") && pwd)
-    $script_dir/rust
-    cargo install sd
-else 
-    echo "sd is already installed. Skipping..."
-fi
+script_dir=$(cd $(dirname "$bash_source[0]") && pwd)
+$script_dir/rust
+cargo install sd

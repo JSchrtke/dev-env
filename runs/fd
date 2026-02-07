@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
-if [ -z "$(which fd)" ]; then
-    script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
-    $script_dir/rust
-    source $HOME/.profile
-    cargo install fd-find
-else
-    echo "fd is already installed. Skipping..."
-fi
+script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+$script_dir/rust
+source $HOME/.profile
+cargo install fd-find

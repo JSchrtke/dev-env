@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
-if [ -z "$(which git)" ]; then
-    script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
-    $script_dir/git
-fi
+script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+$script_dir/git
 
 config_dir=$HOME/.config
 mkdir $config_dir

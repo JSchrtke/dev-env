@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
 
-if [ -z "$(which tldr)" ]; then
-    sudo apt install -y tealdeer
-    tldr --update
-else 
-    echo "tldr is already installed. Skipping..."
-fi
+sudo apt install -y tealdeer
+tldr --update
