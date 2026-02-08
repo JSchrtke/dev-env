@@ -8,10 +8,12 @@ if [ -z "$(which fzf)" ]; then
     git clone https://github.com/junegunn/fzf.git
     cd fzf
     make install
-    cp ./bin/fzf ~/.local/bin
+    cp ./bin/fzf ~/bin
+    ./install --key-bindings --completion --update-rc
     if [ -z "$(grep 'eval "$(fzf --bash)"' ~/.bashrc)" ]; then
         echo 'eval "$(fzf --bash)"' >> ~/.bashrc
     fi
+    source ~/.bashrc
 else
     echo "fzf is already installed. Skipping..."
 fi
