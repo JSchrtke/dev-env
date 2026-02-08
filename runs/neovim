@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-if [ -z "$(which neovim)" ]; then
-    script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 
+if [ -z "$(which nvim)" ]; then
     sudo apt upgrade
     sudo apt update -y
     sudo apt install -y clang cmake ninja-build gettext curl build-essential git
@@ -19,7 +19,7 @@ if [ -z "$(which neovim)" ]; then
     sudo make install
 
     # Install treesitter dependencies
-    ./runs/rust
+    $script_dir/rust
     cargo install --locked tree-sitter-cli
 
     # Configure
