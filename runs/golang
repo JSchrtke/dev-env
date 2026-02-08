@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
 
-mkdir tmp-go-install-dir
-cd tmp-go-install-dir
-wget https://go.dev/dl/go1.25.7.linux-amd64.tar.gz
-sudo rm -rf /usr/local/go
-sudo tar -C /usr/local -xzf go1.25.7.linux-amd64.tar.gz
-if [ -z "$(grep 'export PATH=$PATH:/usr/local/go/bin' ~/.profile)" ]; then
-    echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile
+if [ -z "$(which go)" ]; then
+    mkdir tmp-go-install-dir
+    cd tmp-go-install-dir
+    wget https://go.dev/dl/go1.25.7.linux-amd64.tar.gz
+    sudo rm -rf /usr/local/go
+    sudo tar -C /usr/local -xzf go1.25.7.linux-amd64.tar.gz
+    if [ -z "$(grep 'export PATH=$PATH:/usr/local/go/bin' ~/.profile)" ]; then
+        echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile
+    fi
+    if [ -z "$(grep 'export PATH=$PATH:$HOME/go/bin' ~/.profile)" ]; then
+        echo 'export PATH=$PATH:$HOME/go/bin' >> ~/.profile
+    fi
+    cd ..
+    rm -rf tmp-go-install-dir
+    source ~/.profile
+else
+    echo "Go is already installed. Skipping..."
 fi
-if [ -z "$(grep 'export PATH=$PATH:$HOME/go/bin' ~/.profile)" ]; then
-    echo 'export PATH=$PATH:$HOME/go/bin' >> ~/.profile
-fi
-cd ..
-rm -rf tmp-go-install-dir
