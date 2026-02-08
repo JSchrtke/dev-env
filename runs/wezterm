@@ -1,30 +1,34 @@
 #!/usr/bin/env bash
 
-script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
-$script_dir/git
-$script_dir/rust
-source $HOME/.profile
+if [ -z "$(which wezterm)" ]; then
+    script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+    $script_dir/git
+    $script_dir/rust
+    source $HOME/.profile
 
-mkdir -p $HOME/develop/wez
-cd $HOME/develop/wez
-git clone https://github.com/wez/wezterm
-cd wezterm
-git submodule update --init --recursive
-./get-deps
-cargo build --release
+    mkdir -p $HOME/develop/wez
+    cd $HOME/develop/wez
+    git clone https://github.com/wez/wezterm
+    cd wezterm
+    git submodule update --init --recursive
+    ./get-deps
+    cargo build --release
 
 
-bin_dir=/usr/local/bin
-sudo cp ./target/release/wezterm $bin_dir
-sudo cp ./target/release/wezterm-mux-server $bin_dir
-sudo cp ./target/release/wezterm-gui $bin_dir
+    bin_dir=/usr/local/bin
+    sudo cp ./target/release/wezterm $bin_dir
+    sudo cp ./target/release/wezterm-mux-server $bin_dir
+    sudo cp ./target/release/wezterm-gui $bin_dir
 
-mkdir -p ~/.local/share/applications
-cp ./assets/wezterm.desktop $HOME/.local/share/applications
+    mkdir -p ~/.local/share/applications
+    cp ./assets/wezterm.desktop $HOME/.local/share/applications
 
-mkdir -p $HOME/.config/wezterm
-mkdir -p $HOME/develop/js
-cd $HOME/develop/js
-git clone https://github.com/jschrtke/dotfiles.git
-cd dotfiles
-cp -r wezterm $HOME/.config
+    mkdir -p $HOME/.config/wezterm
+    mkdir -p $HOME/develop/js
+    cd $HOME/develop/js
+    git clone https://github.com/jschrtke/dotfiles.git
+    cd dotfiles
+    cp -r wezterm $HOME/.config
+else 
+    echo "wezterm is already installed. Skipping..."
+fi

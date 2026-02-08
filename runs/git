@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
-sudo apt install -y git
-git config --global init.defaultBranchName main
+if [ -z "$(which git)" ]; then
+    sudo apt install -y git
+    git config --global init.defaultBranchName main
 
-if [ -z "$(which nvim)" ]; then
-    git config --global core.editor "nvim -u NORC"
+    if [ -z "$(which nvim)" ]; then
+        git config --global core.editor "nvim -u NORC"
+    fi
+else
+    echo "git is already installed. Skipping..."
 fi

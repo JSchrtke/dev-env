@@ -1,31 +1,35 @@
 #!/usr/bin/env bash
 
-script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+if [ -z "$(which neovim)" ]; then
+    script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 
-sudo apt upgrade
-sudo apt update -y
-sudo apt install -y clang cmake ninja-build gettext curl build-essential git
+    sudo apt upgrade
+    sudo apt update -y
+    sudo apt install -y clang cmake ninja-build gettext curl build-essential git
 
-# Build and install nvim
-mkdir -p $HOME/develop/neovim
-cd $HOME/develop/neovim
-git clone https://github.com/neovim/neovim.git
-cd neovim
-git checkout v0.11.0
+    # Build and install nvim
+    mkdir -p $HOME/develop/neovim
+    cd $HOME/develop/neovim
+    git clone https://github.com/neovim/neovim.git
+    cd neovim
+    git checkout v0.11.0
 
-git checkout stable
-make CMAKE_BUILD_TYPE=RelWithDebInfo
-sudo make install
+    git checkout stable
+    make CMAKE_BUILD_TYPE=RelWithDebInfo
+    sudo make install
 
-# Install treesitter dependencies
-./runs/rust
-cargo install --locked tree-sitter-cli
+    # Install treesitter dependencies
+    ./runs/rust
+    cargo install --locked tree-sitter-cli
 
-# Configure
-dev_dir=$HOME/develop/js
-mkdir -p $dev_dir
-cd $dev_dir
-git clone https://github.com/jschrtke/dotfiles.git --recurse-submodules
-cd ./dotfiles
-mkdir -p $HOME/.config/nvim
-cp -r ./nvim $HOME/.config/
+    # Configure
+    dev_dir=$HOME/develop/js
+    mkdir -p $dev_dir
+    cd $dev_dir
+    git clone https://github.com/jschrtke/dotfiles.git --recurse-submodules
+    cd ./dotfiles
+    mkdir -p $HOME/.config/nvim
+    cp -r ./nvim $HOME/.config/
+else 
+    echo "neovim is already installed. Skipping..."
+fi
