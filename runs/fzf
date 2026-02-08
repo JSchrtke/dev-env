@@ -1,3 +1,13 @@
 #!/usr/bin/env bash
 
-sudo apt install -y fzf
+script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+$script_dir/golang
+mkdir -p ~/thirdparty/
+cd ~/thirdparty/
+git clone https://github.com/junegunn/fzf.git
+cd fzf
+make install
+cp ./bin/fzf ~/.local/bin
+if [ -z "$(grep 'eval "$(fzf --bash)"' ~/.bashrc)" ]; then
+    echo 'eval "$(fzf --bash)"' >> ~/.bashrc
+fi
