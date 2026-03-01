@@ -15,6 +15,7 @@ if [ -z "$(which go)" ]; then
     cd ..
     rm -rf tmp-go-install-dir
     source ~/.profile
+    go install golang.org/x/tools/gopls@latest
 else
     echo "Go is already installed. Skipping..."
 fi
